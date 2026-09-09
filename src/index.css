@@ -1,0 +1,29 @@
+:root {
+  /* Base */
+  --background: #F4F5F9;
+  --surface: #FFFFFF;
+  --surface-hover: #F0F1F5;
+
+  /* Text */
+  --text-primary: #14171F;
+  --text-secondary: #6B7280;
+  --text-muted: #9CA3AF;
+
+  /* Border */
+  --border: #E2E4EA;
+  --border-strong: #C7CAD3;
+
+  /* Brand */
+  --primary: #00A09A;
+  --primary-dark: #201C26;
+  --primary-light: #EEF0FF;
+
+  /* Status */
+  --success: #16A34A;
+  --warning: #F59E0B;
+  --danger: #DC2626;
+  --info: #0EA5E9;
+}
+body {
+  margin: 0;
+}
