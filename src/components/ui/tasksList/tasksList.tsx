@@ -30,8 +30,7 @@ function TasksList() {
             </div>
 
             {mockTasks.map((task) => {
-                const { icon: PriorityIcon, color } =
-                    priorityConfig[task.priority];
+                const { icon: PriorityIcon, color } = priorityConfig[task.priority];
 
                 return (
                     <div

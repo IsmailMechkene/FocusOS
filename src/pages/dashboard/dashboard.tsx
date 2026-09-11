@@ -2,6 +2,7 @@ import classes from "./dashboard.module.css"
 import Card from "../../components/dashboard/statCard/statCard";
 import { mockStats } from "../../mocks/stats";
 import TasksList from "../../components/ui/tasksList/tasksList";
+import ProjectsCard from "../../components/dashboard/projectsCard/projectsCard";
 
 function getGreeting(): string {
     const hour = new Date().getHours();
@@ -30,7 +31,7 @@ function Dashboard() {
             </div>
 
             <div className={classes.dashboard__right}>
-
+                <ProjectsCard />
             </div>
         </div>
     );
