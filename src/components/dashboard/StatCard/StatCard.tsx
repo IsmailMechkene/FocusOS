@@ -1,4 +1,4 @@
-import classes from "./StatCard.module.css"
+import classes from "./statCard.module.css"
 
 interface CardProps{
     title: string;

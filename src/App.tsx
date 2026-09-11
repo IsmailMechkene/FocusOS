@@ -1,8 +1,8 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router";
 
-import Header from "./components/layout/Header/Header";
-import Sidebar from "./components/layout/Sidebar/Sidebar";
+import Header from "./components/layout/header/header";
+import Sidebar from "./components/layout/sidebar/sidebar";
 import Dashboard from "./pages/dashboard/dashboard";
 
 function App() {
