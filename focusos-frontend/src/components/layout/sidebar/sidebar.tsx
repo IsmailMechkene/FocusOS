@@ -17,8 +17,8 @@ function Sidebar() {
                 <img
                     src="/logo.svg"
                     alt="FocusOS logo"
-                    width={36}
-                    height={36}
+                    width={28}
+                    height={28}
                     className={classes.sidebar__header_logo}
                 />
                 <h1>FocusOS</h1>

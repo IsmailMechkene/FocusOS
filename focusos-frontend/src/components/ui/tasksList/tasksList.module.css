@@ -33,6 +33,10 @@
     border-bottom: 1px solid var(--border);
 }
 
+.tasks__headerRow input {
+    opacity: 0;
+}
+
 .tasks__row {
     padding: 14px 8px;
     border-radius: 10px;

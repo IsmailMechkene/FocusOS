@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import Header from "./components/layout/header/header";
 import Sidebar from "./components/layout/sidebar/sidebar";
 import Dashboard from "./pages/dashboard/dashboard";
+import Tasks from "./pages/tasks/tasks";
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                     <main className="content">
                         <Routes>
                             <Route path="/" element={<Dashboard />} />
+                            <Route path="/tasks" element={<Tasks />} />
                         </Routes>
                     </main>
                 </div>

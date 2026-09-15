@@ -8,6 +8,7 @@ import {
     Pencil,
     Trash2,
 } from "lucide-react";
+import { useState } from "react";
 
 const priorityConfig = {
     high: { icon: ArrowUp, color: "var(--danger)" },
@@ -16,10 +17,20 @@ const priorityConfig = {
     done: { icon: Check, color: "var(--success)" },
 };
 
-function TasksList() {
+interface TasksListProps {
+    hasFilter: boolean;
+}
+
+function TasksList({hasFilter}: TasksListProps) {
+    const [statusFilter, setstatusFilter] = useState("all");
+    const [priorityFilter, setPriorityFilter] = useState("all");
+    const [projectFilter, setProjectFilter] = useState("all");
+    
     return (
         <div className={classes.tasks}>
-            <h3 className={classes.tasks__title}>Today's Tasks</h3>
+            {!hasFilter && <h3 className={classes.tasks__title}>Today's Tasks</h3>}
+
+            {hasFilter && <FilterBar />}
 
             <div className={classes.tasks__headerRow}>
                 <input type="checkbox" />

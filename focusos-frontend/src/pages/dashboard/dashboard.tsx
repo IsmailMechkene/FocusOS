@@ -27,7 +27,7 @@ function Dashboard() {
                         <Card key={stat.title} title={stat.title} value={stat.value} />
                     ))}
                 </div>
-                <TasksList />
+                <TasksList hasFilter={false}/>
             </div>
 
             <div className={classes.dashboard__right}>
