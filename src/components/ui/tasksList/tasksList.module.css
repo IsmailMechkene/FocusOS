@@ -1,74 +1,78 @@
 .tasks {
-    background-color: #ffffff;
-    border-radius: 16px;
+    overflow-x: auto;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
     padding: 24px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-    font-family: sans-serif;
+    box-shadow: var(--shadow-sm);
 }
 
 .tasks__title {
-    font-size: 18px;
-    font-weight: 700;
-    color: #1a1a1a;
-    margin: 0 0 16px 0;
+    font-size: 1.1rem;
+    font-weight: 750;
+    letter-spacing: -0.025em;
+    color: var(--text-primary);
+    margin: 0 0 18px;
 }
 
 .tasks__headerRow,
 .tasks__row {
     display: grid;
-    grid-template-columns: 32px 1fr 80px 90px 110px 60px;
+    grid-template-columns: 32px minmax(170px, 1fr) 80px 90px 110px 60px;
     align-items: center;
     gap: 12px;
 }
 
 .tasks__headerRow {
-    font-size: 12px;
-    font-weight: 600;
+    font-size: 0.68rem;
+    font-weight: 700;
     letter-spacing: 0.03em;
     text-transform: uppercase;
-    color: #999999;
-    padding: 0 8px 12px 8px;
-    border-bottom: 1px solid #eeeeee;
+    color: var(--text-muted);
+    padding: 0 8px 13px;
+    border-bottom: 1px solid var(--border);
 }
 
 .tasks__row {
     padding: 14px 8px;
     border-radius: 10px;
-    transition: background-color 0.15s ease;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    transition: background-color 160ms ease, color 160ms ease;
 }
 
 .tasks__row:hover {
-    background-color: #fafafa;
+    background-color: var(--surface-hover);
 }
 
 .rowChecked {
-    background-color: #f0faf8;
+    background-color: var(--success-light);
 }
 
 .checkbox {
     width: 18px;
     height: 18px;
-    accent-color: #16a394;
+    accent-color: var(--primary);
     cursor: pointer;
 }
 
 .completed {
-    color: #aaaaaa;
+    color: var(--text-muted);
     text-decoration: line-through;
 }
 
 .due {
     font-size: 14px;
-    color: #666666;
+    color: var(--text-secondary);
 }
 
 .projectTag {
     display: inline-block;
-    background-color: #f0f0f0;
-    color: #555555;
-    font-size: 12px;
-    font-weight: 500;
-    padding: 4px 10px;
+    background-color: var(--primary-light);
+    color: var(--primary-hover);
+    font-size: 0.72rem;
+    font-weight: 650;
+    padding: 5px 10px;
     border-radius: 999px;
     width: fit-content;
 }
@@ -78,9 +82,14 @@
     gap: 10px;
     opacity: 0;
     transition: opacity 0.15s ease;
-    color: #999999;
+    color: var(--text-muted);
 }
 
 .tasks__row:hover .actions {
     opacity: 1;
+}
+
+@media (max-width: 520px) {
+    .tasks { padding: 18px; }
+    .actions { opacity: 1; }
 }
