@@ -9,6 +9,7 @@ import {
     Trash2,
 } from "lucide-react";
 import { useState } from "react";
+import FilterBar from "../filterBar/filterbar";
 
 const priorityConfig = {
     high: { icon: ArrowUp, color: "var(--danger)" },
