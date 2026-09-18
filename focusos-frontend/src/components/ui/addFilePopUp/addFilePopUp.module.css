@@ -1,0 +1,172 @@
+.addFile {
+    position: fixed;
+    z-index: 100;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: rgba(18, 27, 49, 0.42);
+    backdrop-filter: blur(3px);
+}
+
+.addFile__dialog {
+    width: min(100%, 520px);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: var(--surface);
+    box-shadow: 0 24px 56px rgba(18, 27, 49, 0.24);
+}
+
+.addFile__header,
+.addFile__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 22px;
+}
+
+.addFile__header {
+    border-bottom: 1px solid var(--border);
+}
+
+.addFile__header h2 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 1.05rem;
+    font-weight: 750;
+    letter-spacing: -0.025em;
+}
+
+.addFile__close {
+    display: grid;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 0;
+    border-radius: 8px;
+    place-items: center;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.addFile__close:hover { background: var(--surface-hover); color: var(--text-primary); }
+
+.addFile__body {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 22px;
+}
+
+.addFile__field,
+.addFile__priorityField,
+.addFile__projectField {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.addFile__field > span,
+.addFile__priorityField legend {
+    padding: 0;
+    color: var(--text-primary);
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.addFile__field input,
+.addFile__field textarea {
+    width: 100%;
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    outline: none;
+    background: var(--surface);
+    color: var(--text-primary);
+    font: inherit;
+    font-size: 0.88rem;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.addFile__field input { height: 40px; padding: 0 12px; }
+.addFile__field textarea { min-height: 102px; padding: 11px 12px; resize: vertical; }
+
+.addFile__field input::placeholder,
+.addFile__field textarea::placeholder { color: var(--text-muted); }
+
+.addFile__field input:focus,
+.addFile__field textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(91, 92, 226, 0.14);
+}
+
+.addFile__prioritySwitch {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    overflow: hidden;
+    margin-top: 2px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface-subtle);
+}
+
+.addFile__prioritySwitch button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: 38px;
+    border: 0;
+    border-right: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 650;
+}
+
+.addFile__prioritySwitch button:last-child { border-right: 0; }
+.addFile__prioritySwitch button:hover { background: var(--surface-hover); color: var(--text-primary); }
+.addFile__prioritySwitch .active { background: var(--primary-light); }
+.addFile__prioritySwitch .high { color: var(--danger); }
+.addFile__prioritySwitch .medium { color: var(--warning); }
+.addFile__prioritySwitch .low { color: var(--text-secondary); }
+
+.addFile__dateAndProject {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.addFile__footer {
+    justify-content: flex-end;
+    gap: 10px;
+    border-top: 1px solid var(--border);
+}
+
+.addFile__footer button {
+    min-height: 38px;
+    padding: 0 14px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.addFile__cancel { border: 1px solid var(--border-strong); background: var(--surface); color: var(--text-secondary); }
+.addFile__cancel:hover { background: var(--surface-hover); color: var(--text-primary); }
+.addFile__submit { border: 1px solid var(--primary); background: var(--primary); color: var(--surface); box-shadow: 0 4px 10px rgba(91, 92, 226, 0.2); }
+.addFile__submit:hover { background: var(--primary-hover); }
+
+@media (max-width: 520px) {
+    .addFile { padding: 12px; align-items: end; }
+    .addFile__dialog { max-height: calc(100vh - 24px); overflow-y: auto; border-radius: 16px; }
+    .addFile__header, .addFile__footer { padding: 16px; }
+    .addFile__body { gap: 15px; padding: 18px 16px; }
+    .addFile__dateAndProject { grid-template-columns: 1fr; }
+}

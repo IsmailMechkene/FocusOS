@@ -11,102 +11,9 @@
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85);
 }
 
-.filterGroup {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.filterGroup + .filterGroup {
+.filterBar > * + * {
     padding-left: 14px;
     border-left: 1px solid var(--border);
-}
-
-.filterLabel {
-    color: var(--text-secondary);
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.055em;
-    text-transform: uppercase;
-}
-
-.selectWrapper { position: relative; }
-
-.selectTrigger {
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    min-width: 126px;
-    height: 36px;
-    padding: 0 34px 0 11px;
-    border: 1px solid var(--border);
-    border-radius: 9px;
-    outline: none;
-    background-color: var(--surface);
-    color: var(--text-primary);
-    cursor: pointer;
-    font-size: 0.8rem;
-    font-weight: 600;
-    box-shadow: 0 1px 2px rgba(24, 32, 51, 0.03);
-    transition: border-color 160ms ease, box-shadow 160ms ease;
-}
-
-.selectTrigger svg {
-    position: absolute;
-    right: 10px;
-    color: var(--text-muted);
-    transition: transform 160ms ease, color 160ms ease;
-}
-
-.selectTrigger:hover,
-.selectTrigger.isOpen {
-    border-color: var(--primary);
-    box-shadow: 0 3px 8px rgba(42, 47, 95, 0.08);
-}
-
-.selectTrigger.isOpen svg {
-    color: var(--primary);
-    transform: rotate(180deg);
-}
-
-.selectTrigger:focus-visible {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(91, 92, 226, 0.14);
-}
-
-.selectMenu {
-    position: absolute;
-    z-index: 10;
-    top: calc(100% + 7px);
-    left: 0;
-    width: max(100%, 160px);
-    padding: 5px;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    background: var(--surface);
-    box-shadow: var(--shadow-md);
-}
-
-.selectMenu button {
-    display: block;
-    width: 100%;
-    padding: 8px 9px;
-    border: 0;
-    border-radius: 6px;
-    outline: 0;
-    background: transparent;
-    color: var(--text-secondary);
-    cursor: pointer;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-align: left;
-}
-
-.selectMenu button:hover,
-.selectMenu button:focus-visible,
-.selectMenu .selectedOption {
-    background: var(--primary-light);
-    color: var(--primary-hover);
 }
 
 @media (max-width: 620px) {
@@ -116,18 +23,8 @@
         padding: 12px;
     }
 
-    .filterGroup {
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    .filterGroup + .filterGroup {
+    .filterBar > * + * {
         padding-left: 0;
         border-left: 0;
-    }
-
-    .selectTrigger {
-        min-width: 0;
-        width: min(65%, 260px);
     }
 }
