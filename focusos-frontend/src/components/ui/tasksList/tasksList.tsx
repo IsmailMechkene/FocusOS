@@ -9,7 +9,7 @@ import {
     Trash2,
 } from "lucide-react";
 import { useState } from "react";
-import FilterBar from "../filterBar/filterbar";
+import FilterBar from "../filterBar/filterBar";
 
 const priorityConfig = {
     high: { icon: ArrowUp, color: "var(--danger)" },
@@ -22,14 +22,53 @@ interface TasksListProps {
     hasFilter: boolean;
 }
 
-function TasksList({hasFilter}: TasksListProps) {
-    const [statusFilter, setstatusFilter] = useState("all");
-    const [priorityFilter, setPriorityFilter] = useState("all");
-    const [projectFilter, setProjectFilter] = useState("all");
-    
+type PaginationItem = number | "ellipsis";
+
+function getPaginationItems(currentPage: number, totalPages: number): PaginationItem[] {
+    if (totalPages <= 3) {
+        return Array.from({ length: totalPages }, (_, index) => index + 1);
+    }
+
+    if (totalPages <= 7) {
+        if (currentPage <= 2) return [1, 2, "ellipsis", totalPages];
+        if (currentPage >= totalPages - 1) return [1, "ellipsis", totalPages - 1, totalPages];
+        return [1, "ellipsis", currentPage, "ellipsis", totalPages];
+    }
+
+    const visiblePages = new Set([1, totalPages, currentPage - 1, currentPage, currentPage + 1]);
+    const pages = [...visiblePages]
+        .filter((page) => page >= 1 && page <= totalPages)
+        .sort((first, second) => first - second);
+
+    return pages.reduce<PaginationItem[]>((items, page, index) => {
+        const previousPage = pages[index - 1];
+
+        if (previousPage && page - previousPage > 1) {
+            items.push("ellipsis");
+        }
+
+        items.push(page);
+        return items;
+    }, []);
+}
+
+function TasksList({ hasFilter }: TasksListProps) {
+    const TASKS_PER_PAGE = 5;
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const totalPages = Math.ceil(mockTasks.length / TASKS_PER_PAGE);
+
+    const startIndex = (currentPage - 1) * TASKS_PER_PAGE;
+    const endIndex = startIndex + TASKS_PER_PAGE;
+
+    const currentTasks = mockTasks.slice(startIndex, endIndex);
+    const paginationItems = getPaginationItems(currentPage, totalPages);
+
     return (
         <div className={classes.tasks}>
-            {!hasFilter && <h3 className={classes.tasks__title}>Today's Tasks</h3>}
+            {!hasFilter && (
+                <h3 className={classes.tasks__title}>Today's Tasks</h3>
+            )}
 
             {hasFilter && <FilterBar />}
 
@@ -41,8 +80,9 @@ function TasksList({hasFilter}: TasksListProps) {
                 <span>Project</span>
             </div>
 
-            {mockTasks.map((task) => {
-                const { icon: PriorityIcon, color } = priorityConfig[task.priority];
+            {currentTasks.map((task) => {
+                const { icon: PriorityIcon, color } =
+                    priorityConfig[task.priority];
 
                 return (
                     <div
@@ -72,6 +112,56 @@ function TasksList({hasFilter}: TasksListProps) {
                     </div>
                 );
             })}
+
+            <div className={classes.pagination}>
+                <span className={classes.pagination__info}>
+                    {startIndex + 1}–{Math.min(endIndex, mockTasks.length)} of{" "}
+                    {mockTasks.length}
+                </span>
+
+                <div className={classes.pagination__controls}>
+                    <button
+                        type="button"
+                        className={classes.pagination__button}
+                        disabled={currentPage === 1}
+                        onClick={() => setCurrentPage((page) => page - 1)}
+                    >
+                        Previous
+                    </button>
+
+                    {paginationItems.map((item, index) =>
+                        item === "ellipsis" ? (
+                            <span key={`ellipsis-${index}`} className={classes.pagination__ellipsis}>
+                                …
+                            </span>
+                        ) : (
+                            <button
+                                type="button"
+                                key={item}
+                                className={
+                                    currentPage === item
+                                    ? classes.activePage
+                                    : classes.pagination__button
+                                }
+                                aria-label={`Go to page ${item}`}
+                                aria-current={currentPage === item ? "page" : undefined}
+                                onClick={() => setCurrentPage(item)}
+                            >
+                                {item}
+                            </button>
+                        )
+                    )}
+
+                    <button
+                        type="button"
+                        className={classes.pagination__button}
+                        disabled={currentPage === totalPages}
+                        onClick={() => setCurrentPage((page) => page + 1)}
+                    >
+                        Next
+                    </button>
+                </div>
+            </div>
         </div>
     );
 }

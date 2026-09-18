@@ -1,6 +1,6 @@
-package com.focusos.focusosbackend.repository;
+package com.focusos.repository;
 
-import com.focusos.focusosbackend.model.Task;
+import com.focusos.model.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TaskRepository extends JpaRepository<Task, Long> {

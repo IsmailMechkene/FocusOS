@@ -1,4 +1,4 @@
-package com.focusos.focusosbackend.model;
+package com.focusos.model;
 
 import jakarta.persistence.*;
 import lombok.Data;

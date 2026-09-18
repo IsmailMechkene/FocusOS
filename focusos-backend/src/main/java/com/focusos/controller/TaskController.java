@@ -1,7 +1,7 @@
-package com.focusos.focusosbackend.controller;
+package com.focusos.controller;
 
-import com.focusos.focusosbackend.model.Task;
-import com.focusos.focusosbackend.repository.TaskRepository;
+import com.focusos.model.Task;
+import com.focusos.repository.TaskRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
