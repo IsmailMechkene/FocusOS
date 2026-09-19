@@ -1,0 +1,147 @@
+.register {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    padding: 24px;
+    background:
+        radial-gradient(circle at 8% 8%, rgba(91, 92, 226, 0.16), transparent 28rem),
+        radial-gradient(circle at 92% 88%, rgba(53, 134, 219, 0.12), transparent 26rem),
+        var(--background);
+}
+
+.registerForm {
+    width: min(100%, 500px);
+    padding: clamp(28px, 5vw, 44px);
+    border: 1px solid rgba(229, 232, 240, 0.9);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: var(--shadow-md);
+}
+
+.registerForm h1 {
+    margin: 0 0 32px;
+    color: var(--text-primary);
+    font-size: clamp(1.75rem, 4vw, 2.15rem);
+    font-weight: 750;
+    letter-spacing: -0.045em;
+    line-height: 1.15;
+}
+
+.firstName__field,
+.lastName__field,
+.password__field {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 650;
+}
+
+.registerForm input {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 14px;
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    outline: none;
+    background: var(--surface-subtle);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 400;
+    transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.registerForm input::placeholder {
+    color: var(--text-muted);
+}
+
+.registerForm input:hover {
+    border-color: #bec5d5;
+}
+
+.registerForm input:focus {
+    border-color: var(--primary);
+    background: var(--surface);
+    box-shadow: 0 0 0 3px rgba(91, 92, 226, 0.13);
+}
+
+.passwordInput {
+    position: relative;
+    display: block;
+}
+
+.passwordInput input {
+    padding-right: 76px;
+}
+
+.registerForm .passwordToggle {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    min-height: auto;
+    width: auto;
+    margin: 0;
+    padding: 6px 8px;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    box-shadow: none;
+    color: var(--primary);
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1;
+    transform: translateY(-50%);
+}
+
+.registerForm .passwordToggle:hover {
+    background: var(--primary-light);
+    box-shadow: none;
+    transform: translateY(-50%);
+}
+
+.registerForm .passwordToggle:active {
+    transform: translateY(-50%);
+}
+
+.registerForm .passwordToggle:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 1px;
+}
+
+.registerForm button {
+    width: 100%;
+    min-height: 48px;
+    margin-top: 8px;
+    border: 0;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--primary), #7475e9);
+    color: var(--surface);
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.registerForm button:hover {
+    background: linear-gradient(135deg, var(--primary-hover), var(--primary));
+    box-shadow: 0 8px 18px rgba(91, 92, 226, 0.28);
+    transform: translateY(-1px);
+}
+
+.registerForm button:active {
+    box-shadow: none;
+    transform: translateY(0);
+}
+
+.registerForm button:focus-visible {
+    outline: 3px solid rgba(91, 92, 226, 0.3);
+    outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+    .register { padding: 16px; }
+    .registerForm { padding: 28px 22px; border-radius: 16px; }
+    .registerForm h1 { margin-bottom: 28px; }
+}
