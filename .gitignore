@@ -1,0 +1,2 @@
+# Local Spring configuration may contain credentials and must not be committed.
+focusos-backend/src/main/resources/application.properties
