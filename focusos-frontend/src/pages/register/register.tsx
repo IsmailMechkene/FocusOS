@@ -1,5 +1,6 @@
 import { useState } from "react";
 import classes from "./register.module.css";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
     const [firstName, setFirstName] = useState("");
@@ -8,13 +9,42 @@ function Register() {
     const [password, setPassword] = useState("");
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setError("");
+
+        try {
+            const res = await fetch("http://localhost:8080/api/auth/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ firstName, lastName, email, password }),
+            });
+
+            if (!res.ok) {
+                throw new Error("Registration failed. Try a different email.");
+            }
+
+            const data = await res.json();
+            console.log("Registered, token:", data.token);
+
+            navigate("/login");
+        } catch (err) {
+            setError(
+                err instanceof Error ? err.message : "Something went wrong",
+            );
+        }
+    };
 
     return (
-        // <div className={classes.register} onSubmit={handleSubmit}>
         <div className={classes.register}>
-
-            <form className={classes.registerForm}>
+            <form className={classes.registerForm} onSubmit={handleSubmit}>
                 <h1>Create account</h1>
+
+                {error && <p className={classes.error}>{error}</p>}
+
 
                 <label className={classes.firstName__field}>
                     <span>First name</span>
@@ -63,9 +93,15 @@ function Register() {
                         <button
                             className={classes.passwordToggle}
                             type="button"
-                            aria-label={isPasswordVisible ? "Hide password" : "Show password"}
+                            aria-label={
+                                isPasswordVisible
+                                    ? "Hide password"
+                                    : "Show password"
+                            }
                             aria-pressed={isPasswordVisible}
-                            onClick={() => setIsPasswordVisible((visible) => !visible)}
+                            onClick={() =>
+                                setIsPasswordVisible((visible) => !visible)
+                            }
                         >
                             {isPasswordVisible ? "Hide" : "Show"}
                         </button>

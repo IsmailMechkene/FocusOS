@@ -139,6 +139,30 @@
     outline-offset: 3px;
 }
 
+.signupPrompt {
+    margin: 24px 0 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.signupPrompt a {
+    color: var(--primary);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.signupPrompt a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+.signupPrompt a:focus-visible {
+    border-radius: 3px;
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
 @media (max-width: 480px) {
     .login { padding: 16px; }
     .loginForm { padding: 28px 22px; border-radius: 16px; }
